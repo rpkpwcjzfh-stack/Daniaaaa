@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>هل تحبني؟</title>
+<style>
+    body {
+        background: linear-gradient(135deg, #ffd6e8, #fff);
+        font-family: 'Comic Sans MS', cursive;
+        text-align: center;
+        padding-top: 50px;
+        direction: rtl;
+        overflow: hidden;
+    }
+    .box {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        display: inline-block;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 2;
+    }
+    button {
+        font-size: 18px;
+        padding: 10px 25px;
+        margin: 10px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+    }
+    .yes {
+        background-color: #ff6fa5;
+        color: white;
+    }
+    .no {
+        background-color: #ccc;
+        position: absolute;
+    }
+    #message {
+        margin-top: 20px;
+        font-size: 22px;
+        color: #ff4081;
+    }
+
+    .heart {
+        position: fixed;
+        bottom: -20px;
+        font-size: 24px;
+        animation: floatUp 4s linear forwards;
+    }
+
+    @keyframes floatUp {
+        0% {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-800px) scale(1.8);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+
+<body>
+<div class="box">
+    <h1>هل تحبني؟ 🧸💗</h1>
+
+    <button class="yes" onclick="showLove()">نعم</button>
+    <button class="no" onmouseover="moveButton()">لا</button>
+
+    <div id="message"></div>
+</div>
+
+<script>
+function showLove() {
+    document.getElementById("message").innerHTML =
+        "وأنا أحبك كثيرًا <span style='direction:ltr;display:inline-block;'>güzelim</span> 💖";
+
+    for (let i = 0; i < 40; i++) {
+        createHeart();
+    }
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+function moveButton() {
+    const btn = document.querySelector('.no');
+    btn.style.top = Math.random() * 80 + "%";
+    btn.style.left = Math.random() * 80 + "%";
+}
+</script>
+</body>
+</html>
